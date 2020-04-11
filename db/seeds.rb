@@ -8,3 +8,8 @@
 jr = User.create(username: "Me", password_digest: "not you")
 fl = Trip.create(name: "florida", location: "Miami")
 pr = PassengerRelationship.create(user: jr, trip: fl)
+
+5.times {User.create(username: Faker::Name.new, password_digest: "1234")}
+5.times {Trip.create(name: Faker::Space.galaxy , location: Faker::Space.planet)}
+10.times {PassengerRelationship.create(user: User.all.sample, trip: Trip.all.sample)}
+10.times {DriverRelationship.create(user: User.all.sample, trip: Trip.all.sample)}
