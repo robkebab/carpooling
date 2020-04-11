@@ -5,3 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+jr = User.create(username: "Me", password_digest: "not you")
+fl = Trip.create(name: "florida", location: "Miami")
+pr = PassengerRelationship.create(user: jr, trip: fl)
