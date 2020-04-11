@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_11_175849) do
+ActiveRecord::Schema.define(version: 2020_04_11_182345) do
 
   create_table "driver_relationships", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(version: 2020_04_11_175849) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["trip_id"], name: "index_driver_relationships_on_trip_id"
     t.index ["user_id"], name: "index_driver_relationships_on_user_id"
+  end
+
+  create_table "passenger_relationships", force: :cascade do |t|                  
+    t.integer "user_id", null: false
+    t.integer "trip_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["trip_id"], name: "index_passenger_relationships_on_trip_id"
+    t.index ["user_id"], name: "index_passenger_relationships_on_user_id"
   end
 
   create_table "trips", force: :cascade do |t|
@@ -38,4 +47,6 @@ ActiveRecord::Schema.define(version: 2020_04_11_175849) do
 
   add_foreign_key "driver_relationships", "trips"
   add_foreign_key "driver_relationships", "users"
+  add_foreign_key "passenger_relationships", "trips"
+  add_foreign_key "passenger_relationships", "users"
 end
